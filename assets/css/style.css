@@ -48,3 +48,11 @@ button{
 #message-box, #attack-msg{
     color:white;
 }
+
+.defeated{
+    cursor: no-drop !important;
+}
+
+#enemies-box .hero{
+    cursor: crosshair !important;
+}

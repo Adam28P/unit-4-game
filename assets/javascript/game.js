@@ -22,7 +22,7 @@ $(document).ready(function () {
             attack: 15,
             image: 'assets/images/scarlet-witch.png',
             enemyAttackBack: 20,
-            loserImage: ''
+            loserImage: 'assets/images/scarlet-witch-bw.png'
         },
         antMan: {
             name: 'Ant-Man',
@@ -30,7 +30,7 @@ $(document).ready(function () {
             attack: 14,
             image: 'assets/images/ant-man.png',
             enemyAttackBack: 10,
-            loserImage: ''
+            loserImage: 'assets/images/ant-man-bw.png'
         },
         spiderMan: {
             name: 'Spider-Man',
@@ -38,7 +38,7 @@ $(document).ready(function () {
             attack: 8,
             image: 'assets/images/spider-man.png',
             enemyAttackBack: 20,
-            loserImage: ''
+            loserImage: 'assets/images/spider-man-bw.png'
         },
         blackWidow: {
             name: 'Black Widow',
@@ -46,7 +46,7 @@ $(document).ready(function () {
             attack: 7,
             image: 'assets/images/black-widow.png',
             enemyAttackBack: 15,
-            loserImage: ''
+            loserImage: 'assets/images/black-widow-bw.png'
         }
     };
 
@@ -109,7 +109,7 @@ $(document).ready(function () {
             //if hero dies, the attack button disappears, restart button appears, hero image changes
             if (hero.health <= 0) {
                 $("#message-box").append("You lost!");
-                $(".hero-class").html("<img src='assets/images/" + hero.loserImage + "' class='img-fluid'>");
+                $(".hero-class").html("<img src='" + hero.loserImage + "' class='img-fluid'>");
                 makeRestartBtn();
                 $("#attack-button").empty();
             };
@@ -120,7 +120,7 @@ $(document).ready(function () {
 
     function enemyDied() {
         wins++;
-        $(myEnemy).html("<img src='assets/images/" + enemy.loserImage + "' class='img-fluid'>");
+        $(myEnemy).html("<img src='" + enemy.loserImage + "' class='img-fluid'>");
         $(myEnemy).addClass("defeated");
         $("#enemies-body").append(myEnemy);
         $("#enemy-body, #enemy-health, #enemy-name, #enemy-button").empty();
@@ -129,6 +129,6 @@ $(document).ready(function () {
         myEnemy = "";
     }
 
-    
+
 
 });
