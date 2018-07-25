@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    // Initialize variables 
     var hero = "";
     var enemy = "";
     var myEnemy = "";
@@ -63,6 +64,7 @@ $(document).ready(function () {
         }
     };
 
+    // Function that runs when a hero is selected
     $(".hero").on("click", function () {
         // If a hero hasn't been selected yet
         if (hero == "") {
@@ -76,6 +78,7 @@ $(document).ready(function () {
         }
     });
 
+    // Function to run we select a hero. Add images of all other characters to enemy section
     function heroIsSelected() {
         $("#enemies-box").removeClass("hidden");
         $("#enemies-body").append(scarletWitchImg, spiderManImg, antManImg, blackWidowImg);
@@ -83,6 +86,7 @@ $(document).ready(function () {
 
     };
 
+    // // Function that runs when an enemy is selected
     $("#enemies-box").on("click", ".hero", function chooseEnemy() {
         if (myEnemy == "") {
             $("#enemy-box").removeClass("hidden");
@@ -90,15 +94,16 @@ $(document).ready(function () {
             $("#message-box, #attack-msg").empty();
             myEnemy = this;
             enemy = gameCharacters[$(this).val()];
-            //challengers lose the hero class--losing the click function and the hover
             $(this).removeClass("hero");
             $("#enemy-body").append('<img src=' + enemy.image + ' />');
             $("#enemy-name").append(enemy.name);
             $("#enemy-health").append(enemy.health);
             $("#attack-button").append(attackBtn);
+            backgroundSound.play();
         }
     });
 
+    // Function to run when attack button is clicked. 
     $("#attack-button").on("click", function () {
         heroAttack();
         counterAttack();
@@ -107,6 +112,7 @@ $(document).ready(function () {
         }
     });
 
+// Function to run on the initial attack
     function heroAttack() {
         currentAttack += hero.attack;
         enemy.health -= currentAttack;
@@ -123,6 +129,7 @@ $(document).ready(function () {
         };
     }
 
+    // FUnction to run on the counter attack
     function counterAttack() {
         if (enemy.health > 0) {
             hero.health -= enemy.counter;
@@ -141,6 +148,7 @@ $(document).ready(function () {
         }
     };
 
+    // Function to run when an enemy is defeated
     function enemyDied() {
         wins++;
         $("#enemy-box").addClass("hidden");
@@ -149,12 +157,14 @@ $(document).ready(function () {
         $("#enemy-body, #enemy-health, #enemy-name, #enemy-button").empty();
         if (wins === 3) {
             youWin();
-        }else{
-        $("#message-box").append("You defeated your opponent! Choose another enemy!");
-        enemy = "";
-        myEnemy = "";
+        } else {
+            $("#message-box").append("You defeated your opponent! Choose another enemy!");
+            enemy = "";
+            myEnemy = "";
+        }
     }
-    }
+
+    // Function to run when you win the game
     function youWin() {
         $("#enemy-box").addClass("hidden");
         $("#attack-msg").empty();
@@ -163,11 +173,13 @@ $(document).ready(function () {
         makeRestartBtn();
     };
 
+    // Function to run to make restart button appear
     function makeRestartBtn() {
         restartBtn.addClass("btn btn-primary btn-lg reset-button");
         $("#restart").append(restartBtn);
     }
 
+    // Function to run when reset button is clicked. Reload page.
     $("#restart").on("click", function () {
         document.location.reload(true);
         backgroundSound.play();
