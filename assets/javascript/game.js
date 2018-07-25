@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     // Background game sounds
     var backgroundSound = new Audio('assets/music/avengers-theme.mp3');
-    var loseSound = new Audio('assets/music/you-lose.mp3');
+    var loseSound = "";
 
     // Play background music when web page loads
     window.onload = function () {
@@ -31,7 +31,8 @@ $(document).ready(function () {
             attack: 8,
             image: 'assets/images/scarlet-witch.png',
             counter: 20,
-            loserImage: 'assets/images/scarlet-witch-bw.png'
+            loserImage: 'assets/images/scarlet-witch-bw.png',
+            loseMusic: 'assets/music/scarlet-lose.mp3'
         },
         antMan: {
             name: 'Ant-Man',
@@ -39,7 +40,8 @@ $(document).ready(function () {
             attack: 14,
             image: 'assets/images/ant-man.png',
             counter: 10,
-            loserImage: 'assets/images/ant-man-bw.png'
+            loserImage: 'assets/images/ant-man-bw.png',
+            loseMusic: 'assets/music/antman-lose.mp3'
         },
         spiderMan: {
             name: 'Spider-Man',
@@ -47,7 +49,8 @@ $(document).ready(function () {
             attack: 8,
             image: 'assets/images/spider-man.png',
             counter: 15,
-            loserImage: 'assets/images/spider-man-bw.png'
+            loserImage: 'assets/images/spider-man-bw.png',
+            loseMusic: 'assets/music/spiderman-lose.mp3'
         },
         blackWidow: {
             name: 'Black Widow',
@@ -55,7 +58,8 @@ $(document).ready(function () {
             attack: 7,
             image: 'assets/images/black-widow.png',
             counter: 25,
-            loserImage: 'assets/images/black-widow-bw.png'
+            loserImage: 'assets/images/black-widow-bw.png',
+            loseMusic: 'assets/music/blackwidow-lose.mp3'
         }
     };
 
@@ -109,7 +113,13 @@ $(document).ready(function () {
         $("#attack-msg").text("You attacked for " + currentAttack + " damage!")
         $("#enemy-health").text(enemy.health);
         if (enemy.health <= 0 && hero.health > 0) {
-            enemyDied();
+            backgroundSound.pause();
+            loseSound = new Audio(enemy.loseMusic);
+            loseSound.play();
+            $("#attack-button").addClass("hidden");
+            $("#enemy-body").html("<img src='" + enemy.loserImage + "' class='img-fluid'>");
+            $(myEnemy).html("<img src='" + enemy.loserImage + "' class='img-fluid'>");
+            setTimeout(enemyDied, 6000);
         };
     }
 
@@ -119,8 +129,9 @@ $(document).ready(function () {
             //if hero dies, the attack button disappears, restart button appears, hero image changes
             if (hero.health <= 0) {
                 backgroundSound.pause();
+                loseSound = new Audio(hero.loseMusic);
                 loseSound.play();
-                setTimeout(makeRestartBtn, 4000);
+                setTimeout(makeRestartBtn, 6000);
                 $("#message-box").append("You lost!");
                 $("#hero-body").html("<img src='" + hero.loserImage + "' class='img-fluid'>");
                 $("#attack-button").empty();
@@ -131,20 +142,19 @@ $(document).ready(function () {
     };
 
     function enemyDied() {
-        backgroundSound.pause();
-        // play voice clip of hero here
         wins++;
         $("#enemy-box").addClass("hidden");
-        $("#attack-button").addClass("hidden");
-        $(myEnemy).html("<img src='" + enemy.loserImage + "' class='img-fluid'>");
         $(myEnemy).addClass("defeated");
         $("#enemies-body").append(myEnemy);
         $("#enemy-body, #enemy-health, #enemy-name, #enemy-button").empty();
+        if (wins === 3) {
+            youWin();
+        }else{
         $("#message-box").append("You defeated your opponent! Choose another enemy!");
         enemy = "";
         myEnemy = "";
     }
-
+    }
     function youWin() {
         $("#enemy-box").addClass("hidden");
         $("#attack-msg").empty();
