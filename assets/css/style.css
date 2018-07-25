@@ -39,3 +39,7 @@ button{
     padding: 10px !important;
     font-weight: bold;
 }
+
+#middle-stats{
+    text-align:center;
+}
