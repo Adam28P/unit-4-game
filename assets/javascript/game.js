@@ -73,7 +73,7 @@ $(document).ready(function () {
     $("#enemies-box").on("click", ".hero", function chooseEnemy() {
         if (myEnemy == "") {
             $("#enemy-box").removeClass("hidden");
-            $("#message-box, #attack-nar").empty();
+            $("#message-box, #attack-msg").empty();
             myEnemy = this;
             enemy = gameCharacters[$(this).val()];
             //challengers lose the hero class--losing the click function and the hover
@@ -84,5 +84,51 @@ $(document).ready(function () {
             $("#attack-button").append(attackBtn);
         }
     });
+
+    $("#attack-button").on("click", function () {
+        heroAttack();
+        counterAttack();
+        if (wins === 3) {
+            youWin();
+        }
+    });
+
+    function heroAttack() {
+        currentAttack += hero.attack;
+        enemy.health -= currentAttack;
+        $("#attack-msg").text("You attacked for " + currentAttack + " damage!")
+        $("#enemy-health").text(enemy.health);
+        if (enemy.health <= 0 && hero.health > 0) {
+            enemyDied();
+        };
+    }
+
+    function counterAttack() {
+        if (enemy.health > 0) {
+            hero.health -= enemy.enemyAttackBack;
+            //if hero dies, the attack button disappears, restart button appears, hero image changes
+            if (hero.health <= 0) {
+                $("#message-box").append("You lost!");
+                $(".hero-class").html("<img src='assets/images/" + hero.loserImage + "' class='img-fluid'>");
+                makeRestartBtn();
+                $("#attack-button").empty();
+            };
+            $("#attack-msg").append("<div>Your opponent attacked and you took " + enemy.enemyAttackBack + " damage!</div>");
+            $("#hero-health").text(hero.health);
+        }
+    };
+
+    function enemyDied() {
+        wins++;
+        $(myEnemy).html("<img src='assets/images/" + enemy.loserImage + "' class='img-fluid'>");
+        $(myEnemy).addClass("defeated");
+        $("#enemies-body").append(myEnemy);
+        $("#enemy-body, #enemy-health, #enemy-name, #enemy-button").empty();
+        $("#message-box").append("You defeated your opponent! Choose another enemy!");
+        enemy = "";
+        myEnemy = "";
+    }
+
+    
 
 });
