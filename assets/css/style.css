@@ -40,6 +40,20 @@ button{
     font-weight: bold;
 }
 
+.reset-button{
+    background-color:green;
+    border: 0 !important;
+    padding: 10px !important;
+    font-weight: bold;
+}
+
+.reset-button:hover{
+    background-color:green;
+    border: 0 !important;
+    padding: 10px !important;
+    font-weight: bold;
+}
+
 #middle-stats{
     text-align:center;
     margin-top:30px;

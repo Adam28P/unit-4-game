@@ -129,6 +129,21 @@ $(document).ready(function () {
         myEnemy = "";
     }
 
+    function youWin() {
+        $("#attack-msg").empty();
+        $("#attack-button").addClass("hidden");
+        $("#message-box").text("You have defeated all 3 enemies! You win!");
+        makeRestartBtn();
+    };
+
+    function makeRestartBtn() {
+        restartBtn.addClass("btn btn-primary btn-lg reset-button");
+        $("#restart").append(restartBtn);
+    }
+
+    $("#restart").on("click", function () {
+        document.location.reload(true);
+    });
 
 
 });
