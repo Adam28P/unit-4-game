@@ -1,45 +1,54 @@
+/* Set background pattern */
 body{
-    background-color: black;
     background:url('../images/ep_naturalblack.png');
 }
 
+/* Set font family and colour */
 h1, h2, h3{
     color:white;
     font-family: 'Marvel', sans-serif;
 }
 
+/* Set h1 and h2 headers to bold */
 h1, h2{
     font-weight:bold;
 }
 
+/* Set a margin top for the title of the page */
 .title{
     margin-top:45px;
 }
 
+/* Format buttons with hero images */
 button{
     border: 3px white solid !important;
     padding: 0 !important;
     margin-bottom:20px;
 }
 
+/* Class made to hide elements on page */
 .hidden{
     display:none;
 }
 
+/* Class made to hide element on page until hero is selected */
 .hero-class{
     display: none;
 }
 
+/* Align images centred in their divs */
 #hero-body, #enemy-body{
     text-align: center;
 }
 
+/* Format attack button */
 .attack-button{
     border: 0 !important;
     padding: 10px !important;
     font-weight: bold;
 }
 
+/* Format reset button */
 .reset-button{
     background-color:green;
     border: 0 !important;
@@ -47,6 +56,7 @@ button{
     font-weight: bold;
 }
 
+/* Format reset button on hover */
 .reset-button:hover{
     background-color:green;
     border: 0 !important;
@@ -54,19 +64,23 @@ button{
     font-weight: bold;
 }
 
+/* Format stats in the middle of the page */
 #middle-stats{
     text-align:center;
     margin-top:30px;
 }
 
+/* Set stats to white */
 #message-box, #attack-msg{
     color:white;
 }
 
+/* Set cursor style for enemies that have been defeated */
 .defeated{
     cursor: no-drop !important;
 }
 
+/* Set cursor style for enemies that have not been defeated */
 #enemies-box .hero{
     cursor: crosshair !important;
 }
