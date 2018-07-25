@@ -67,11 +67,12 @@ $(document).ready(function () {
         $("#enemies-box").removeClass("hidden");
         $("#enemies-body").append(scarletWitchImg, spiderManImg, antManImg, blackWidowImg);
         $("#hero-box").removeClass("hidden");
-        $("#enemy-box").removeClass("hidden");
+       
     };
 
     $("#enemies-box").on("click", ".hero", function chooseEnemy() {
         if (myEnemy == "") {
+            $("#enemy-box").removeClass("hidden");
             $("#message-box, #attack-nar").empty();
             myEnemy = this;
             enemy = gameCharacters[$(this).val()];
