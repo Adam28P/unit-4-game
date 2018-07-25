@@ -14,6 +14,16 @@ $(document).ready(function () {
     var antManImg = $("#antMan");
     var blackWidowImg = $("#blackWidow");
 
+    // Background game sounds
+    var backgroundSound = new Audio('assets/music/avengers-theme.mp3');
+    var winSound = new Audio('assets/music/you-win.mp3');
+    var loseSound = new Audio('assets/music/you-lose.mp3');
+
+    // Play background music when web page loads
+    window.onload = function () {
+        backgroundSound.play();
+    };
+
     // Game Character objects
     var gameCharacters = {
         scarletWitch: {
@@ -73,6 +83,7 @@ $(document).ready(function () {
     $("#enemies-box").on("click", ".hero", function chooseEnemy() {
         if (myEnemy == "") {
             $("#enemy-box").removeClass("hidden");
+            $("#attack-button").removeClass("hidden");
             $("#message-box, #attack-msg").empty();
             myEnemy = this;
             enemy = gameCharacters[$(this).val()];
@@ -108,9 +119,11 @@ $(document).ready(function () {
             hero.health -= enemy.counter;
             //if hero dies, the attack button disappears, restart button appears, hero image changes
             if (hero.health <= 0) {
+                backgroundSound.pause();
+                loseSound.play();
+                setTimeout(makeRestartBtn, 4000);
                 $("#message-box").append("You lost!");
                 $("#hero-body").html("<img src='" + hero.loserImage + "' class='img-fluid'>");
-                makeRestartBtn();
                 $("#attack-button").empty();
             };
             $("#attack-msg").append("<div>Your opponent attacked and you took " + enemy.counter + " damage!</div>");
@@ -119,7 +132,10 @@ $(document).ready(function () {
     };
 
     function enemyDied() {
+        backgroundSound.pause();
+        // play voice clip of hero here
         wins++;
+        $("#attack-button").addClass("hidden");
         $(myEnemy).html("<img src='" + enemy.loserImage + "' class='img-fluid'>");
         $(myEnemy).addClass("defeated");
         $("#enemies-body").append(myEnemy);
@@ -144,6 +160,7 @@ $(document).ready(function () {
 
     $("#restart").on("click", function () {
         document.location.reload(true);
+        backgroundSound.play();
     });
 
 
