@@ -30,6 +30,12 @@ button{
     display: none;
 }
 
-#hero-body{
+#hero-body, #enemy-body{
     text-align: center;
+}
+
+.attack-button{
+    border: 0 !important;
+    padding: 10px !important;
+    font-weight: bold;
 }

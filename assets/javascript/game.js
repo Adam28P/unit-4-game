@@ -1,13 +1,13 @@
 $(document).ready(function () {
 
     var hero = "";
-    var challenger = "";
-    var myChallenger = "";
+    var enemy = "";
+    var myEnemy = "";
     var currentAttack = 0;
     var wins = 0;
     var restartBtn = $("<button>Restart</button>");
     var attackBtn = $("<button>ATTACK!</button>");
-    attackBtn.addClass("btn btn-dark");
+    attackBtn.addClass("btn btn-primary btn-lg attack-button");
 
     var scarletWitchImg = $("#scarletWitch");
     var spiderManImg = $("#spiderMan");
@@ -64,10 +64,24 @@ $(document).ready(function () {
     });
 
     function heroIsSelected() {
-        $("#enemy-box").removeClass("hidden");
-        $("#enemy-body").append(scarletWitchImg, spiderManImg, antManImg, blackWidowImg);
+        $("#enemies-box").removeClass("hidden");
+        $("#enemies-body").append(scarletWitchImg, spiderManImg, antManImg, blackWidowImg);
         $("#hero-box").removeClass("hidden");
-        $("#challenger-box").removeClass("hidden");
+        $("#enemy-box").removeClass("hidden");
     };
+
+    $("#enemies-box").on("click", ".hero", function chooseEnemy() {
+        if (myEnemy == "") {
+            $("#message-box, #attack-nar").empty();
+            myEnemy = this;
+            enemy = gameCharacters[$(this).val()];
+            //challengers lose the hero class--losing the click function and the hover
+            $(this).removeClass("hero");
+            $("#enemy-body").append('<img src=' + enemy.image + ' />');
+            $("#enemy-name").append(enemy.name);
+            $("#enemy-health").append(enemy.health);
+            $("#attack-button").append(attackBtn);
+        }
+    });
 
 });
