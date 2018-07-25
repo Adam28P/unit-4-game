@@ -16,10 +16,8 @@ h1, h2{
     margin-top:45px;
 }
 
-
 button{
+    border: 3px white solid !important;
     padding: 0 !important;
-    border: 0 !important;
-    margin-right:15px;
     margin-bottom:20px;
 }
