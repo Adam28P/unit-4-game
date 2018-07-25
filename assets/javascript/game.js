@@ -16,7 +16,6 @@ $(document).ready(function () {
 
     // Background game sounds
     var backgroundSound = new Audio('assets/music/avengers-theme.mp3');
-    var winSound = new Audio('assets/music/you-win.mp3');
     var loseSound = new Audio('assets/music/you-lose.mp3');
 
     // Play background music when web page loads
@@ -135,6 +134,7 @@ $(document).ready(function () {
         backgroundSound.pause();
         // play voice clip of hero here
         wins++;
+        $("#enemy-box").addClass("hidden");
         $("#attack-button").addClass("hidden");
         $(myEnemy).html("<img src='" + enemy.loserImage + "' class='img-fluid'>");
         $(myEnemy).addClass("defeated");
