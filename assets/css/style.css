@@ -21,3 +21,15 @@ button{
     padding: 0 !important;
     margin-bottom:20px;
 }
+
+.hidden{
+    display:none;
+}
+
+.hero-class{
+    display: none;
+}
+
+#hero-body{
+    text-align: center;
+}

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     var hero = "";
     var challenger = "";
     var myChallenger = "";
@@ -9,40 +9,65 @@ $(document).ready(function () {
     var attackBtn = $("<button>ATTACK!</button>");
     attackBtn.addClass("btn btn-dark");
 
+    var scarletWitchImg = $("#scarletWitch");
+    var spiderManImg = $("#spiderMan");
+    var antManImg = $("#antMan");
+    var blackWidowImg = $("#blackWidow");
+
     // Game Character objects
     var gameCharacters = {
-        scarlettWitch: {
+        scarletWitch: {
             name: 'Scarlet Witch',
             health: 120,
-            attack: 8,
-            image: '',
-            enemyAttackBack: 15,
+            attack: 15,
+            image: 'assets/images/scarlet-witch.png',
+            enemyAttackBack: 20,
             loserImage: ''
         },
         antMan: {
             name: 'Ant-Man',
             health: 100,
             attack: 14,
-            image: '',
-            enemyAttackBack: 5,
+            image: 'assets/images/ant-man.png',
+            enemyAttackBack: 10,
             loserImage: ''
         },
         spiderMan: {
             name: 'Spider-Man',
             health: 150,
             attack: 8,
-            image: '',
+            image: 'assets/images/spider-man.png',
             enemyAttackBack: 20,
             loserImage: ''
         },
-        theWasp: {
-            name: 'The Wasp',
+        blackWidow: {
+            name: 'Black Widow',
             health: 180,
             attack: 7,
-            image: '',
-            enemyAttackBack: 25,
+            image: 'assets/images/black-widow.png',
+            enemyAttackBack: 15,
             loserImage: ''
         }
+    };
+
+    $(".hero").on("click", function () {
+        // If a hero hasn't been selected yet
+        if (hero == "") {
+            hero = gameCharacters[$(this).val()];
+            $("#hero-body").append('<img src=' + hero.image + ' />');
+            $("#hero-name").append(hero.name);
+            $("#hero-health").append(hero.health);
+            $(this).attr("class", "hero-class");
+            $(".hero-selection").attr("class", "hidden");
+            heroIsSelected();
+        }
+    });
+
+    function heroIsSelected() {
+        $("#enemy-box").removeClass("hidden");
+        $("#enemy-body").append(scarletWitchImg, spiderManImg, antManImg, blackWidowImg);
+        $("#hero-box").removeClass("hidden");
+        $("#challenger-box").removeClass("hidden");
     };
 
 });
