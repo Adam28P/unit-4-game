@@ -109,7 +109,7 @@ $(document).ready(function () {
             //if hero dies, the attack button disappears, restart button appears, hero image changes
             if (hero.health <= 0) {
                 $("#message-box").append("You lost!");
-                $(".hero-class").html("<img src='" + hero.loserImage + "' class='img-fluid'>");
+                $("#hero-body").html("<img src='" + hero.loserImage + "' class='img-fluid'>");
                 makeRestartBtn();
                 $("#attack-button").empty();
             };
@@ -130,6 +130,7 @@ $(document).ready(function () {
     }
 
     function youWin() {
+        $("#enemy-box").addClass("hidden");
         $("#attack-msg").empty();
         $("#attack-button").addClass("hidden");
         $("#message-box").text("You have defeated all 3 enemies! You win!");
