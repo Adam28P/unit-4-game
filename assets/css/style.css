@@ -1,0 +1,25 @@
+body{
+    background-color: black;
+    background:url('../images/ep_naturalblack.png');
+}
+
+h1, h2, h3{
+    color:white;
+    font-family: 'Marvel', sans-serif;
+}
+
+h1, h2{
+    font-weight:bold;
+}
+
+.title{
+    margin-top:45px;
+}
+
+
+button{
+    padding: 0 !important;
+    border: 0 !important;
+    margin-right:15px;
+    margin-bottom:20px;
+}

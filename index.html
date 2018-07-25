@@ -10,57 +10,143 @@
     <!-- Link to our reset stylesheet -->
     <link rel="stylesheet" href="assets/css/reset.css">
 
+    <!-- Link Bootstrap stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+
     <!-- Link to our stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Link to Marvel font -->
+    <link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet">
 
     <!-- Link to jQuery file -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- Link to JavaScript game file -->
-    <script src="assets/javascript/game.js"></script>
-
 </head>
 
 <body>
-
-    <div class="main-section-title">Avengers RPG!</div>
-    <div id="main-game-section">
-        <!-- Where the characters are initially available to be selected. -->
-        <div id="characters-section">
-            <div class="section-title">Select Your Character</div>
-            <div id="character-area"></div>
-        </div>
-
-        <!-- Section for our selected character. -->
-        <div id="selected-character-section">
-            <div class="section-title">Your Character</div>
-            <!-- Where our selected character will appear. -->
-            <div id="selected-character"></div>
-        </div>
-
-        <!-- Where our enemies available to attack will appear. -->
-        <div id="available-to-attack-section">
-            <div class="section-title">Enemies Available To Attack</div>
-        </div>
-
-        <div class="section-title">Fight Section</div>
-        <div id="fight-section">
-            <button id="attack-button" style="display: none;">Attack</button>
-        </div>
-
-        <div id="action">
-            <div class="character-section">
-                <div class="section-title">Defender</div>
-                <!-- Where our defender will appear. -->
-                <div id="defender"></div>
+    <div class="container title">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <h1>Avengers RPG</h1>
+                    <h3>Select your superhero, then battle your enemies one by one until they are all defeated!</h3>
+                </center>
             </div>
         </div>
-
     </div>
-    <!-- Area for game messages. -->
-    <div id="game-message"></div>
-    <button id="reset-button" style="display: none;">Reset Game</button>
+    <br />
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="hero-box" class="card hidden">
+                    <div class="card-header text-white bg-info">
+                        <h4 class="card-title">Your Hero</h4>
+                    </div>
+                    <div id="hero-body" class="card-body">
+                    </div>
+                    <div class="card-footer">
+                        Your Heroes' Name:
+                        <p id="hero-name"></p>
+                        Your Heroes' Health:
+                        <p id="hero-health"></p>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-md-1">
+                <br />
+            </div>
+
+            <div class="col-md-2">
+                <div class="text-center">
+                    <img src="assets/images/avengers-logo.png" alt="Avenger's logo" width="200" />
+                    <div id="attack-button"></div>
+                    <div id="attack-nar"></div>
+                    <div id="message-box"></div>
+                    <div id="restart"></div>
+                </div>
+
+            </div>
+
+            <div class="col-md-1">
+                <br/>
+            </div>
+
+            <div class="col-md-4">
+                <div id="challenger-box" class="card hidden">
+                    <div class="card-header text-white bg-danger">
+                        <h4 class="card-title">Enemy</h4>
+                    </div>
+                    <div id="challenger-body" class="card-body">
+                    </div>
+                    <div class="card-footer">
+                        Enemy's Name:
+                        <p id="enemy-name"></p>
+                        Enemy Health:
+                        <p id="challenger-health"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <h2>Hero Selection</h2>
+                </center>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <button id="scarletWitch" type="button" class="hero btn btn-primary btn-lg" value="scarletWitch">
+                        <img src="assets/images/scarlet-witch.png" class="img-fluid">
+                    </button>
+                    <button id="spiderMan" type="button" class="hero btn btn-primary btn-lg" value="spiderMan">
+                        <img src="assets/images/spider-man.png" class="img-fluid">
+                    </button>
+                    <button id="antMan" type="button" class="hero btn btn-primary btn-lg" value="antMan">
+                        <img src="assets/images/ant-man.png" class="img-fluid">
+                    </button>
+                    <button id="theWasp" type="button" class="hero btn btn-primary btn-lg" value="theWasp">
+                        <img src="assets/images/the-wasp.png" class="img-fluid">
+                    </button>
+                </center>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                    <div id="enemy-box" class="card bg-light hidden">
+                            <div class="card-header">
+                                <h4 class="card-title">Enemies</h4>
+                            </div>
+                            <div id="enemy-body" class="card-body bg-white">
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div> -->
+
+    
+    
+    <br>
+
+    <!-- Link to JavaScript game file -->
+    <script src="assets/javascript/game.js"></script>
 
 </body>
 
