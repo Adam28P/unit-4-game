@@ -18,10 +18,10 @@ $(document).ready(function () {
     var gameCharacters = {
         scarletWitch: {
             name: 'Scarlet Witch',
-            health: 120,
-            attack: 15,
+            health: 150,
+            attack: 8,
             image: 'assets/images/scarlet-witch.png',
-            enemyAttackBack: 20,
+            counter: 20,
             loserImage: 'assets/images/scarlet-witch-bw.png'
         },
         antMan: {
@@ -29,15 +29,15 @@ $(document).ready(function () {
             health: 100,
             attack: 14,
             image: 'assets/images/ant-man.png',
-            enemyAttackBack: 10,
+            counter: 10,
             loserImage: 'assets/images/ant-man-bw.png'
         },
         spiderMan: {
             name: 'Spider-Man',
-            health: 150,
+            health: 120,
             attack: 8,
             image: 'assets/images/spider-man.png',
-            enemyAttackBack: 20,
+            counter: 15,
             loserImage: 'assets/images/spider-man-bw.png'
         },
         blackWidow: {
@@ -45,7 +45,7 @@ $(document).ready(function () {
             health: 180,
             attack: 7,
             image: 'assets/images/black-widow.png',
-            enemyAttackBack: 15,
+            counter: 25,
             loserImage: 'assets/images/black-widow-bw.png'
         }
     };
@@ -67,7 +67,7 @@ $(document).ready(function () {
         $("#enemies-box").removeClass("hidden");
         $("#enemies-body").append(scarletWitchImg, spiderManImg, antManImg, blackWidowImg);
         $("#hero-box").removeClass("hidden");
-       
+
     };
 
     $("#enemies-box").on("click", ".hero", function chooseEnemy() {
@@ -105,7 +105,7 @@ $(document).ready(function () {
 
     function counterAttack() {
         if (enemy.health > 0) {
-            hero.health -= enemy.enemyAttackBack;
+            hero.health -= enemy.counter;
             //if hero dies, the attack button disappears, restart button appears, hero image changes
             if (hero.health <= 0) {
                 $("#message-box").append("You lost!");
@@ -113,7 +113,7 @@ $(document).ready(function () {
                 makeRestartBtn();
                 $("#attack-button").empty();
             };
-            $("#attack-msg").append("<div>Your opponent attacked and you took " + enemy.enemyAttackBack + " damage!</div>");
+            $("#attack-msg").append("<div>Your opponent attacked and you took " + enemy.counter + " damage!</div>");
             $("#hero-health").text(hero.health);
         }
     };
