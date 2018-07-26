@@ -6,7 +6,7 @@
 </ul>
 
 <h2>Screenshot</h2>
-
+<img src="assets/images/avengers-screenshot.png" alt="game screenshot" />
 
 <h2>Game Logic</h2>
 <ul>
