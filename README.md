@@ -1,1 +1,2 @@
-<h1>Star Wars Themed role playing game created with JavaScript, jQuery, HTML and CSS</h1>
+<h1>Avengers RPG</h1>
+<h3>Avengers themed role playing game created with JavaScript, jQuery, HTML and CSS</h3>
